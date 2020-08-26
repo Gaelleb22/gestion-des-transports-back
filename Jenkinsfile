@@ -25,10 +25,8 @@ pipeline {
         }
 
         success {
-            when {
-                branch 'master'
-            }
             script {
+                if ("${env.BRANCH_NAME}" == 'master')
                 discordSend description: "Commit : ${env.GIT_COMMIT} - ${env.BUILD_URL}", 
                 footer: 'Gaëlle', 
                 result: currentBuild.currentResult, 

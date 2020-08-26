@@ -25,16 +25,14 @@ pipeline {
         }
 
         success {
-            script {
-                discordSend description: "Commit : ${env.GIT_COMMIT} - ${env.BUILD_URL}", 
+            when {
+                branch 'master'
+            }
+            discordSend description: "Commit : ${env.GIT_COMMIT} - ${env.BUILD_URL}", 
             footer: 'Gaëlle', 
             result: currentBuild.currentResult, 
             title: env.JOB_NAME, 
             webhookURL: 'https://discordapp.com/api/webhooks/747819422705778738/dHWPHidlNLpiiKftWU84__Ss2LAkws77Swfdk5OWs22qla3hlI1B4zywW8ROg4nAwjRM'
-            }
-            when {
-                branch 'master'
-            }
         }
 
     }

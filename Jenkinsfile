@@ -16,12 +16,9 @@ pipeline {
 
     post {
         always {
-            discordSend description: '', 
+            discordSend description: 'Commit : 'env.GIT_COMMIT' - 'env.BUILD_URL, 
             footer: 'Gaëlle', 
-            image: '', 
-            link: env.BUILD_URL, 
-            result: currentBuild.currentResult, 
-            thumbnail: '', 
+            result: 'currentBuild.currentResult', 
             title: env.JOB_NAME, 
             webhookURL: 'https://discordapp.com/api/webhooks/747819422705778738/dHWPHidlNLpiiKftWU84__Ss2LAkws77Swfdk5OWs22qla3hlI1B4zywW8ROg4nAwjRM'
         }
